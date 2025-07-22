@@ -18,7 +18,6 @@ const DeleteEventsModal = ({
 }) => {
 	const { t } = useTranslation();
 	const dispatch = useAppDispatch();
-
 	const selectedRows = useAppSelector(state => getSelectedRows(state));
 
 	const [allChecked, setAllChecked] = useState(true);

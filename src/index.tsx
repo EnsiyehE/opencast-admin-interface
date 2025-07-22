@@ -3,6 +3,7 @@ import ReactDOMClient from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import axios from "axios";
+import "antd/dist/reset.css";
 
 // redux imports
 import { persistStore } from "redux-persist";

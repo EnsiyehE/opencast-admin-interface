@@ -1,12 +1,15 @@
 import { useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import EventDetails from "./EventDetails";
-import { useAppDispatch, useAppSelector } from "../../../../store";
+import { RootState, useAppDispatch, useAppSelector } from "../../../../store";
 import { removeNotificationWizardForm } from "../../../../slices/notificationSlice";
 import { getModalEvent } from "../../../../selectors/eventDetailsSelectors";
 import { setModalEvent, setShowModal } from "../../../../slices/eventDetailsSlice";
 import { Modal } from "../../../shared/modals/Modal";
 import { FormikProps } from "formik";
+import { Spin } from "antd";
+import { useSelector } from "react-redux";
+
 
 /**
  * This component renders the modal for displaying event details
@@ -14,6 +17,8 @@ import { FormikProps } from "formik";
 const EventDetailsModal = () => {
 	const { t } = useTranslation();
 	const dispatch = useAppDispatch();
+	const statusMetadata = useSelector((state: RootState) => state.eventDetails.statusMetadata);
+	const isLoading = statusMetadata === "loading";
 
 	// tracks, whether the policies are different to the initial value
 	const [policyChanged, setPolicyChanged] = useState(false);
@@ -47,6 +52,7 @@ const EventDetailsModal = () => {
 	};
 
 	return (
+		<Spin spinning={isLoading} tip="Loading..." style={{ minHeight: "100vh", width: "100%" }}>
 		<Modal
 			open
 			closeCallback={close}
@@ -60,6 +66,7 @@ const EventDetailsModal = () => {
 				formikRef={formikRef}
 			/>
 		</Modal>
+		</Spin>
 	);
 };
 
