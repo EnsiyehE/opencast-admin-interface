@@ -615,11 +615,13 @@
 			"NAVIGATION": {
 				"EVENTS": "Events",
 				"SERIES": "Series",
+				"PLAYLISTS": "Playlists",
 				"OVERVIEW": "Overview",
 				"LABEL": "Switch between events and series."
 			},
 			"UPLOAD": "Upload",
 			"ADD_SERIES": "Add series",
+			"ADD_PLAYLIST": "Add playlists",
 			"ADD_EVENT": "Add event",
 			"TABLE": {
 				"CAPTION": "Events",
@@ -1175,6 +1177,177 @@
 			"TABLE": {
 				"CAPTION": "Series",
 				"TITLE": "Series",
+				"HAS_EVENTS": "Contains events",
+				"ORGANIZERS": "Organizer(s)",
+				"CONTRIBUTORS": "Contributor(s)",
+				"CREATED": "Created",
+				"MANAGED_ACL": "Access policy",
+				"EVENTS": "Events",
+				"ACTION": "Actions",
+				"TOOLTIP": {
+					"SERIES": "Filter events for this series",
+					"DETAILS": "Open series details",
+					"DELETE": "Delete series",
+					"CREATION": "Filter for this creation date",
+					"ORGANIZER": "Filter for this organizer",
+					"CONTRIBUTORS": "Filter for this contributor"
+				}
+			},
+			"DETAILS": {
+				"HEADER": "Series details - {{name}}",
+				"TABS": {
+					"METADATA": "Metadata",
+					"EXTENDED_METADATA": "Metadata II",
+					"EVENTS": "Events",
+					"PERMISSIONS": "Access policy",
+					"THEME": "Theme",
+					"TOBIRA": "Tobira",
+					"STATISTICS": "Statistics"
+				},
+				"ACCESS": {
+					"CAPTION": "Access policy",
+					"DESCRIPTION": "",
+					"TEMPLATES": {
+						"TITLE": "Templates"
+					},
+					"ACCESS_POLICY": {
+						"TITLE": "Access policy",
+						"DESCRIPTION": "",
+						"LABEL": "Select a template",
+						"EMPTY": "No template found",
+						"ROLE": "Role",
+						"WRITE": "Write",
+						"READ": "Read",
+						"ADDITIONAL_ACTIONS": "Additional Actions",
+						"ACTION": "Actions",
+						"NEW": "New policy",
+						"NON_USER_ROLES": "Roles and Groups authorized for the series",
+						"USER": "User",
+						"USERS": "Users who are authorized for the series",
+						"NEW_USER": "New user",
+						"REPLACE_EVENT_ACLS": "Update series permissions",
+						"REPLACE_EVENT_ACLS_HINT": "Ensure all events of this series have these permissions in effect",
+						"LOAD_MORE_LIMIT": "policies shown.",
+						"LOAD_MORE_LINK": "Load more"
+					},
+					"ROLES": {
+						"LABEL": "Select a role",
+						"EMPTY": "No role found"
+					}
+				},
+				"METADATA": {
+					"TITLE": "Title",
+					"ID": "UID",
+					"SERIES": "Series",
+					"PUBLISHERS": "Publisher(s)",
+					"ORGANIZERS": "Organizer(s)",
+					"CONTRIBUTORS": "Contributor(s)",
+					"RECORDING_DATE": "Recording date",
+					"CREATED_BY": "Created By",
+					"RIGHTS": "Rights",
+					"SUBJECT": "Subject",
+					"LANGUAGE": "Language",
+					"LICENSE": "License",
+					"DESCRIPTION": "Description",
+					"REPLACE_SERIES_METADATA": "Update series metadata",
+					"REPLACE_SERIES_THEME": "Update series theme"
+				},
+				"TOBIRA": {
+					"HOMEPAGE": "(Homepage)",
+					"DIRECT_LINK": "Direct link to series",
+					"COPY_DIRECT_LINK": "Copy to clipboard",
+					"NOT_MOUNTED": "This series is currently not included the page structure, and can only be reached using the direct link above.",
+					"PAGES": "Pages in Tobira that contain this series",
+					"DISCARD": "Discard",
+					"EDIT_PATH" : "Edit path",
+					"REMOVE_PATH" : "Remove path",
+					"MOUNT_SERIES": "Mount series",
+					"DESCRIPTION": "You may edit the path of pages containing this series if the page has no other content."
+				},
+				"EVENTS": {
+					"TITLE": "Title",
+					"PRESENTER": "Presenter(s)",
+					"CREATED": "Created",
+					"MODIFIED": "Modified",
+					"STATUS": "Status",
+					"LOCATION": "Location",
+					"LINK": "Link"
+				}
+			}
+		},
+		"PLAYLISTS": {
+			"NEW": {
+				"CAPTION": "Create playlists",
+				"METADATA": {
+					"CAPTION": "Metadata",
+					"DESCRIPTION": "",
+					"METADATA": {
+						"TITLE": "Metadata"
+					}
+				},
+				"METADATA_EXTENDED": {
+					"CAPTION": "Extended metadata",
+					"METADATA": {
+						"TITLE": "Extended metadata"
+					}
+				},
+				"ACCESS": {
+					"CAPTION": "Access policy",
+					"TEMPLATES": {
+						"TITLE": "Templates"
+					},
+					"ACCESS_POLICY": {
+						"TITLE": "Access policy",
+						"DESCRIPTION": "At least one role with Read and Write permissions is required.",
+						"LABEL": "Select a template",
+						"EMPTY": "No template found",
+						"ROLE": "Role",
+						"WRITE": "Write",
+						"READ": "Read",
+						"ADDITIONAL_ACTIONS": "Additional Actions",
+						"ACTION": "Actions",
+						"NEW": "New policy",
+						"DETAILS": "Details"
+					},
+					"ROLES": {
+						"LABEL": "Select a role",
+						"EMPTY": "No role found"
+					}
+				},
+				"THEME": {
+					"CAPTION": "Theme",
+					"DESCRIPTION": {
+						"TEXT": "You can optionally use themes to brand your videos. Themes may define bumper and trailer videos, watermarks and title slides including metadata."
+					},
+					"TITLE": "Theme",
+					"LABEL": "Please select a theme",
+					"EMPTY": "No theme found"
+				},
+				"TOBIRA": {
+					"CAPTION": "Tobira",
+					"DESCRIPTION": "Here you can select where you want the series to show up in the Tobira video portal. You can only select one location here by clicking the name or the check mark next to it. The page needs to be empty (marked in bold). You can also create new pages here, but note that they are only persisted if they are on the path to the selected page. In order to select a new page or create sub pages for one, its path segment needs to have a valid value.",
+					"SELECT_PAGE": "Select a target page",
+					"PAGE_TITLE": "Subpage title",
+					"TITLE_OF_SERIES": "(Title of series)",
+					"PATH_SEGMENT": "Path segment",
+					"SUBPAGES": "Subpages",
+					"ADD_SUBPAGE": "Add subpage",
+					"CANCEL": "Cancel",
+					"HOMEPAGE": "Homepage",
+					"SELECTED_PAGE": "Series will be mounted under the following path",
+					"NO_PAGE_SELECTED": "No page selected. Series will not be mounted in Tobira.",
+					"NO_PAGE_SELECTED_EDIT": "No page selected. Series path will not be changed.",
+					"PATH": "Path",
+					"DIRECT_LINK": "A direct link will be available.",
+					"MOUNT_DISCLAIMER": "Series can only be mounted in empty pages"
+				},
+				"SUMMARY": {
+					"CAPTION": "Summary"
+				}
+			},
+			"TABLE": {
+				"CAPTION": "Playlists",
+				"TITLE": "Playlists",
 				"HAS_EVENTS": "Contains events",
 				"ORGANIZERS": "Organizer(s)",
 				"CONTRIBUTORS": "Contributor(s)",

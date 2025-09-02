@@ -79,7 +79,7 @@ export function isSeries(row: Row | Event | Series | Recording | Server | Job | 
 // TODO: Improve row typing. While this somewhat correctly reflects the current state of our code, it is rather annoying to work with.
 export type Row = { selected: boolean } & (Event | Series | Recording | Server | Job | Service | User | Group | AclResult | ThemeDetailsType)
 
-export type Resource = "events" | "series" | "recordings" | "jobs" | "servers" | "services" | "users" | "groups" | "acls" | "themes"
+export type Resource = "events" | "series" |"playLists" | "recordings" | "jobs" | "servers" | "services" | "users" | "groups" | "acls" | "themes"
 
 export type ReverseOptions = "ASC" | "DESC"
 
@@ -105,6 +105,7 @@ const initialState: TableState = {
 	multiSelect: {
 		events: eventsTableConfig.multiSelect,
 		series: seriesTableConfig.multiSelect,
+		playLists: seriesTableConfig.multiSelect,
 		recordings: recordingsTableConfig.multiSelect,
 		jobs: jobsTableConfig.multiSelect,
 		servers: serversTableConfig.multiSelect,
@@ -120,6 +121,7 @@ const initialState: TableState = {
 	sortBy: {
 		events: "date",
 		series: "createdDateTime",
+		playLists: "createdDateTime",
 		recordings: "status",
 		jobs: "id",
 		servers: "online",
@@ -133,6 +135,7 @@ const initialState: TableState = {
 	reverse: {
 		events: "DESC",
 		series: "DESC",
+		playLists: "DESC",
 		recordings: "ASC",
 		jobs: "ASC",
 		servers: "ASC",

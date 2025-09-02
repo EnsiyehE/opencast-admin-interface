@@ -18,4 +18,9 @@ export const eventsLinks: {
 		accessRole: "ROLE_UI_SERIES_VIEW",
 		text: "EVENTS.EVENTS.NAVIGATION.SERIES",
 	},
+	{
+		path: "/events/playlists",
+		accessRole: "ROLE_UI_PLAYLISTS_VIEW",
+		text: "EVENTS.EVENTS.NAVIGATION.PLAYLISTS",
+	},
 ];
