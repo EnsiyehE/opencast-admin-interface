@@ -55,7 +55,7 @@ const RenderField = ({
 			}}
 			onFocus={onFocus}
 			onBlur={onBlur}
-			style={{ display: "flex", justifyContent: "space-between" }}
+			className="single-value"
 		>
 			{metadataField.type === "time" && (
 				<EditableSingleValueTime
@@ -123,17 +123,16 @@ const RenderField = ({
 					ref={editableRef}
 				/>
 			)}
-			<div style={{ display: "flex", justifyContent: "flex-end" }}>
+			<div className="single-value-right">
 				{!focused && showCheck && (
 					<LuCheck
-						className={cn("fa-check", {
+						className={cn("checkmark", {
 							// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
 							active: form.initialValues[field.name] !== field.value,
 						})}
-						style={{ float: "right", cursor: "pointer" }}
 					/>
 				)}
-				{!focused && <LuSquarePen style={{ float: "right", cursor: "pointer", margin: "5px", fontSize: "14px" }}/>}
+				{!focused && <LuSquarePen className="pen"/>}
 			</div>
 		</div>
 	);
@@ -209,13 +208,11 @@ type EditableSingleSelectProps = ({
 	ref: React.RefObject<SelectInstance<any, boolean, GroupBase<any>>>
 })
 const EditableSingleSelect = (props: EditableSingleSelectProps) => {
-	const { t } = useTranslation();
-
 	const {
 		field,
 		metadataField,
 		text,
-		form: { setFieldValue },
+		form,
 		isFirstField,
 		focused,
 		setFocused,
@@ -226,26 +223,16 @@ const EditableSingleSelect = (props: EditableSingleSelectProps) => {
 		return <EditableSingleSelectSeries {...props} />;
 	}
 
-	return (
-		<DropDown
-			ref={ref}
-			value={field.value as string}
-			text={text}
-			options={metadataField.collection
-				? metadataField.collection.map(item => ({ label: item.label ?? item.name, value: item.value, order: item.order }))
-				: []}
-			required={metadataField.required}
-			handleChange={element => element && setFieldValue(field.name, element.value)}
-			placeholder={focused
-				? `-- ${t("SELECT_NO_OPTION_SELECTED")} --`
-				: `${t("SELECT_NO_OPTION_SELECTED")}`
-			}
-			customCSS={{ isMetadataStyle: focused ? false : true }}
-			handleMenuIsOpen={(open: boolean) => setFocused(open)}
-			openMenuOnFocus
-			autoFocus={isFirstField}
-		/>
-	);
+	return <EditableSingleSelectDropDown
+		field={field}
+		metadataField={metadataField}
+		text={text}
+		form={form}
+		isFirstField={isFirstField}
+		focused={focused}
+		setFocused={setFocused}
+		ref={ref}
+	/>;
 };
 
 // Renders editable text area
@@ -340,15 +327,12 @@ const EditableSingleValueTime = ({
 const EditableSingleSelectSeries = ({
 	field,
 	metadataField,
-	text,
-	form: { setFieldValue },
+	form,
 	isFirstField,
 	focused,
 	setFocused,
 	ref,
 }: EditableSingleSelectProps) => {
-	const { t } = useTranslation();
-
 	const [label, setLabel] = useState("");
 
 	useEffect(() => {
@@ -373,11 +357,42 @@ const EditableSingleSelectSeries = ({
 		return transformListProvider(data);
 	};
 
+	return <EditableSingleSelectDropDown
+		field={field}
+		metadataField={metadataField}
+		text={label}
+		form={form}
+		isFirstField={isFirstField}
+		focused={focused}
+		setFocused={setFocused}
+		ref={ref}
+		fetchOptions={fetchOptions}
+	/>;
+};
+
+const EditableSingleSelectDropDown = ({
+	field,
+	metadataField,
+	text,
+	form: { setFieldValue },
+	options,
+	fetchOptions,
+	isFirstField,
+	focused,
+	setFocused,
+	ref,
+}: EditableSingleSelectProps & Pick<
+	Parameters<typeof DropDown>[0],
+	"options" | "fetchOptions"
+>) => {
+	const { t } = useTranslation();
+
 	return (
 		<DropDown
 			ref={ref}
 			value={field.value as string}
-			text={label}
+			text={text}
+			options={options}
 			fetchOptions={fetchOptions}
 			required={metadataField.required}
 			handleChange={element => element && setFieldValue(field.name, element.value)}
@@ -385,7 +400,7 @@ const EditableSingleSelectSeries = ({
 				? `-- ${t("SELECT_NO_OPTION_SELECTED")} --`
 				: `${t("SELECT_NO_OPTION_SELECTED")}`
 			}
-			customCSS={{ isMetadataStyle: focused ? false : true }}
+			customCSS={{ isMetadataStyle: focused ? false : true, width: "100%" }}
 			handleMenuIsOpen={(open: boolean) => setFocused(open)}
 			openMenuOnFocus
 			autoFocus={isFirstField}
