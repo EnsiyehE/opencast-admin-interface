@@ -176,7 +176,7 @@ const DropDown = <T, >({
 	};
 
 	const loadOptions = (
-		inputValue: string,
+		_inputValue: string,
 		callback: (options: DropDownOption[]) => void,
 	) => {
 		callback(formatOptions(filterOptions(_inputValue), required));
